@@ -36,7 +36,7 @@ class Laravelcommend extends Command
         $this->line($this->argument('argument') . " " . $this->option('opsi'));
         
         $name = $this->ask("what is your name?");
-        $password = $this->secret("what is your name?");
+        $password = $this->secret("what is your password?");
 
         if ($this->confirm("Do you want to continue")) {
             $this->line($name . " " . $password);
