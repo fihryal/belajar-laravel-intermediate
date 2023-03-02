@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    return dd(App('hello'),App('hello'));
+    return view('welcome');
+    // return dd(App('hello'),App('hello'));
 });
 
 // app()->bind('hello',function(){
@@ -26,3 +27,7 @@ Route::get('/', function () {
 app()->singleton('hello',function(){
     return new \App\Data\Tabungan();})
 ;
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
