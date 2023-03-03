@@ -1,7 +1,12 @@
 <?php
 
+use App\Notifications\NewVisitor;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Notifications\Notifiable;
+use App\Http\Controllers\HomeController;
+
 
 
 /*
@@ -16,7 +21,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
     return view('welcome');
+
+    
     // return dd(App('hello'),App('hello'));
 });
 
@@ -24,10 +32,10 @@ Route::get('/', function () {
 //     return new \App\Data\Tabungan();})
 // ;
 
-app()->singleton('hello',function(){
-    return new \App\Data\Tabungan();})
-;
+// app()->singleton('hello',function(){
+//     return new \App\Data\Tabungan();})
+// ;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

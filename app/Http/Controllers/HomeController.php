@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewVisitor;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        $user->notify(new NewVisitor("welcome {$user->name}"));
         return view('home');
     }
 }
